@@ -92,5 +92,70 @@ From higher to lower priority:
 To participate in this challenge we kindly ask you to complete an [application form](https://forms.gle/idYKZ8n7T21embgLA). We're looking for developers with a strong background in cryptography, blockchain technology, and preferably experience with zero-knowledge proofs. Please provide detailed information about your relevant past projects and any specific verifier implementations you're interested in or have expertise with. 
 
 Our team will carefully review all applications to ensure a fair and efficient distribution of tasks. This vetting process allows us to avoid duplication of work and ensures that we don't have multiple participants working on the same verifier, as we will only award one implementation per verifier type. 
+[🧱 What Is a Verifier Pallet?
+A verifier pallet in zkVerify is a custom Substrate pallet that:
 
+Accepts a specific proof format.
+
+Verifies it against a verification key.
+
+Emits success/failure events for relayer and dApp use.
+
+🛠️ Step-by-Step Guide to Build a Verifier for zkVerify
+1. Choose the ZK Proof System
+Decide which proof system you want to support. Examples:
+
+STARK (e.g., Cairo/Starkware)
+
+Nova
+
+Bulletproofs
+
+Custom SNARK/STARK you’re experimenting with
+
+Make sure you understand:
+
+The proof format
+
+The public inputs format
+
+How on-chain verification works (need curve ops? hashing?)
+
+2. Fork zkVerify's Repository
+Grab the source code:
+
+bash
+Copy
+Edit
+git clone https://github.com/zkVerify/zkverify-node
+cd zkverify-node/pallets
+Each existing verifier lives in /pallets/verifier-{name}. You can use these as templates.
+
+3. Create Your Verifier Pallet
+Use an existing pallet like verifier-groth16 or verifier-risc0 as a base:
+
+bash
+Copy
+Edit
+cp -r verifier-groth16 verifier-mysnark
+Update:
+
+Cargo.toml
+
+lib.rs
+
+Entry points like fn verify(...)
+
+Replace Groth16 logic with your verifier’s logic using your proof system's Rust verifier crate.
+
+4. Integrate Cryptographic Libraries
+If your proof system has a Rust verifier library (like Bellman, Arkworks, Risc0, etc.), include it in Cargo.toml:
+
+toml
+Copy
+Edit
+[dependencies]
+ark-snark = "0.4"
+ark-bls12-381 = "0.4"
+Implement proof verification logic using that library.
 
