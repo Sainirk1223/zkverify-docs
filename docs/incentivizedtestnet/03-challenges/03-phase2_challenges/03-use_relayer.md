@@ -67,3 +67,5 @@ Make sure to use the provided API key or your unique API key for all submissions
 
 - [Relayer Documentation](../../../overview/02-getting-started/05-relayer.md)
 - [Leaderboard & Points Dashboard](https://points.zkverify.io/loyalty)
+- ["The zkVerify Relayer is a powerful tool that simplifies on-chain verification of zero-knowledge proofs by connecting developers to the zkVerify network. This challenge is an opportunity to get hands-on with the tool, test real proofs, and help shape the future of ZK infrastructure."]
+- 
