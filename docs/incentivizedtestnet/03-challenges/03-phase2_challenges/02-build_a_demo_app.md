@@ -13,3 +13,40 @@ Finally, submit your proposal using the [provided form](https://forms.gle/Pfs2Hu
 Our team will follow up on Telegram to learn more about your ideas!
 
 <b>Important:</b> points rewards will be granted based on the quality, complexity, and distinctiveness of your submission.
+[how to integrate in dapp]
+🛠️ Step 1: Choose Your Proof System
+Determine what proof system your app uses:
+
+Groth16 (e.g., via SnarkJS or Circom)
+
+Plonky2
+
+Noir UltraPlonk
+
+Risc0 zkVM
+
+Space & Time Proof of SQL
+
+Ensure your proofs are compatible with zkVerify’s supported formats.
+
+🌐 Step 2: Use the zkVerify Relayer
+The zkVerify Relayer handles submission and routing of proofs to the on-chain verifier pallet.
+
+🔧 Integration Options:
+REST API: Simple HTTP POST requests to submit proofs.
+
+TypeScript SDK: Install the zkVerify SDK and call it directly in your frontend/backend.
+
+CLI: For testing or scripting.
+
+Example (TypeScript SDK):
+ts
+Copy
+Edit
+import { submitProof } from "@zkverify/sdk";
+
+await submitProof({
+  proofSystem: "groth16",
+  publicInputs: [...],
+  proof: "<your_proof_blob>",
+});
